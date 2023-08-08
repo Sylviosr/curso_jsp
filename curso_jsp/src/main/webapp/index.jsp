@@ -8,9 +8,8 @@
 </head>
 <body>
  <h2>Bem vindo ao Curso de JSP</h2>
- 
- <form action="ServletLogin" method="post">
- 
+
+ <form action="<%= request.getContextPath() %>/ServletLogin" method="post">
  <table>
    <tr>
     <td><label>Login</label></td>
