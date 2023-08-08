@@ -11,9 +11,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.ModelLogin;
 
 /*O chamado Controller são as servlets ou ServletLoginController*/
-/*Mapeamento de URL que vem da tela*/
-@WebServlet("/ServletLogin")
+@WebServlet(urlPatterns = {"/principal/ServletLogin", "/ServletLogin"}) /*Mapeamento de URL que vem da tela*/
 public class ServletLogin extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
         
     public ServletLogin() { 
@@ -28,8 +28,12 @@ public class ServletLogin extends HttpServlet {
 	/*Recebe os dados enviados por um formulario*/
 	protected void doPost(HttpServletRequest request, HttpServletResponse response, Object Requestdispacher) throws ServletException, IOException {
 		
+		String vazio="Por favor preencha os campos de login ou senha"; 
+		String incorretos="Login ou senha incorretos";
+		
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
+		String url = request.getParameter("url");
 		
 		if (login != null && !login.isEmpty() && senha != null && !senha.isEmpty()) {
 			
@@ -42,19 +46,22 @@ public class ServletLogin extends HttpServlet {
 				
 				request.getSession().setAttribute("usuario", modelLogin.getLogin());
 				
-				RequestDispatcher redirecionar = request.getRequestDispatcher("principal/principal.jsp");
-				request.setAttribute("msg", "Informe o login e senha corretamente!");
+				if(url == null || url.equals("null")) {
+				   url = "principal/principal.jsp";					
+				}
+				
+				RequestDispatcher redirecionar = request.getRequestDispatcher(url);
 				redirecionar.forward(request, response);
 				
 			}else {
 				RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
-				request.setAttribute("msg", "Informe o login e senha corretamente!");
+				request.setAttribute("incorretos", incorretos);
 				redirecionar.forward(request, response);
 			}
 			
 		}else {
 			RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("msg", "Informe o login e senha corretamente!");
+			request.setAttribute("vazio", vazio);
 			redirecionar.forward(request, response);
 			
 		}

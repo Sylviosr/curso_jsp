@@ -3,5 +3,14 @@
   <display-name>curso_jsp</display-name>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list> 
+  </welcome-file-list>
+  <filter>
+    <display-name>FilterAutenticao</display-name>
+    <filter-name>FilterAutenticao</filter-name>
+    <filter-class>filter.FilterAutenticao</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterAutenticao</filter-name>
+    <url-pattern>/FilterAutenticao</url-pattern>
+  </filter-mapping>
 </web-app>
