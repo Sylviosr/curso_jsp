@@ -7,12 +7,6 @@
 	<title>Curso JSP</title>
 </head>
 
- <p style="color:red;" align="center"><c:out value="${vazio}"/></p>
-
-    <c:if test="${!empty incorretos}">
-       <p  style="color:red;" align="center">${param.incorretos}</p><br/>
-    </c:if> 
-
 <body>
  <h2>Bem vindo ao Curso de JSP</h2>
 
