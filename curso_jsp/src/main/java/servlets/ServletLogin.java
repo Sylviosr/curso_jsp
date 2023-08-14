@@ -26,7 +26,8 @@ public class ServletLogin extends HttpServlet {
 	}
 	
 	/*Recebe os dados enviados por um formulario*/
-	protected void doPost(HttpServletRequest request, HttpServletResponse response, Object Requestdispacher) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response, Object Requestdispacher) 
+			throws ServletException, IOException {
 		
 //		String vazio="Por favor preencha os campos de login ou senha"; 
 //		String incorretos="Login ou senha incorretos";
@@ -54,13 +55,13 @@ public class ServletLogin extends HttpServlet {
 				redirecionar.forward(request, response);
 				
 			}else {
-				RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+				RequestDispatcher redirecionar = request.getRequestDispatcher("/index.jsp");
 				request.setAttribute("msg", "Informe login e a senha corretamente!");
 				redirecionar.forward(request, response);
 			}
 			
 		}else {
-			RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher redirecionar = request.getRequestDispatcher("/index.jsp");
 			request.setAttribute("msg", "Informe login e a senha corretamente!");
 			redirecionar.forward(request, response);
 			
